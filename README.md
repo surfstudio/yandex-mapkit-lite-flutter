@@ -1,39 +1,144 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# yandex_mapkit_lite
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+**This is a simplified version of the yandex_mapkit 3.4.0 package.** 
+Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+A flutter plugin for displaying yandex maps on iOS and Android.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+|             | Android |   iOS   |
+|-------------|---------|---------|
+| __Support__ | SDK 21+ | iOS 12+ |
 
-## Features
+__Disclaimer__: This project uses Yandex Mapkit which belongs to Yandex  
+When using Mapkit refer to these [terms of use](https://yandex.com/dev/mapkit/doc/en/conditions)
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+## Getting Started
 
-## Getting started
+### Generate your API Key
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+1. Go to https://developer.tech.yandex.ru/services/
+2. Create a `MapKit Mobile SDK` key
 
-## Usage
+### Setup for iOS
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+* Specify your API key and locale in `ios/Runner/AppDelegate.swift`. It should be similar to the following
 
-```dart
-const like = 'sample';
+```swift
+import UIKit
+import Flutter
+import YandexMapsMobile
+
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    YMKMapKit.setLocale("YOUR_LOCALE") // Your preferred language. Not required, defaults to system language
+    YMKMapKit.setApiKey("YOUR_API_KEY") // Your generated API key
+    GeneratedPluginRegistrant.register(with: self)
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+}
 ```
 
-## Additional information
+* Uncomment `platform :ios, '9.0'` in `ios/Podfile` and change to `platform :ios, '12.0'`
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```ruby
+# Uncomment this line to define a global platform for your project
+platform :ios, '12.0'
+```
+
+### Setup for Android
+
+* Add dependency `implementation 'com.yandex.android:maps.mobile:4.4.0-full'` to `android/app/build.gradle`
+
+```groovy
+dependencies {
+    implementation 'com.yandex.android:maps.mobile:4.4.0-full'
+}
+```
+
+* Specify your API key and locale in your custom application class.  
+  If you don't have one the you can create it like so
+
+`android/app/src/main/.../MainApplication.java`
+
+```java
+import android.app.Application;
+
+import com.yandex.mapkit.MapKitFactory;
+
+public class MainApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        MapKitFactory.setLocale("YOUR_LOCALE"); // Your preferred language. Not required, defaults to system language
+        MapKitFactory.setApiKey("YOUR_API_KEY"); // Your generated API key
+    }
+}
+```
+
+`android/app/src/main/.../MainApplication.kt`
+
+```kotlin
+import android.app.Application
+
+import com.yandex.mapkit.MapKitFactory
+
+class MainApplication: Application() {
+  override fun onCreate() {
+    super.onCreate()
+    MapKitFactory.setLocale("YOUR_LOCALE") // Your preferred language. Not required, defaults to system language
+    MapKitFactory.setApiKey("YOUR_API_KEY") // Your generated API key
+  }
+}
+```
+
+* In your `android/app/src/main/AndroidManifest.xml`
+
+Add permissions `<uses-permission android:name="android.permission.INTERNET"/>` and `<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>`
+
+Find `application` tag and replace `android:name` to the name of your custom application class prefixed by a dot `.`.
+In the end it should look like the following
+
+```xml
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <application
+      android:name=".MainApplication" >
+```
+
+### Usage
+
+For usage examples refer to example [app](https://github.com/Unact/yandex_mapkit/tree/master/example)
+
+![image](https://user-images.githubusercontent.com/8961745/100362969-26e23880-300d-11eb-9529-6ab36beffa51.png)
+
+### Additional remarks
+
+YandexMapkit always works with __one language__ only.  
+Due to native constraints after the application is launched it can't be changed.
+
+#### Android
+
+##### Hybrid Composition
+
+By default android views are rendered using [Hybrid Composition](https://flutter.dev/docs/development/platform-integration/platform-views).
+To render the `YandexMap` widget on Android using Virtual Display(old composition), set AndroidYandexMap.useAndroidViewSurface to false.
+Place this anywhere in your code, before using `YandexMap` widget.
+
+```dart
+AndroidYandexMap.useAndroidViewSurface = false;
+```
+
+### Features
+
+* [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
+* [X] Working with collections of map objects
+* [X] Working with clusters
+* [X] Moving around the map
+* [X] Setting map bounds
+* [X] Showing current user location
+* [X] Styling the map
+* [X] Workking with geo objects
