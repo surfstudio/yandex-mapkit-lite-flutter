@@ -144,7 +144,7 @@ class _MapControlsExampleState extends State<_MapControlsExample> {
               await controller.deselectGeoObject();
             },
             onMapLongTap: (Point point) => print('Long tapped map at $point'),
-            onCameraPositionChanged: (CameraPosition cameraPosition, CameraUpdateReason reason, bool finished) {
+            onCameraPositionChanged: (CameraPosition cameraPosition, CameraUpdateReason reason, bool finished, {VisibleRegion? visibleRegion}) {
               print('Camera position: $cameraPosition, Reason: $reason');
 
               if (finished) {
