@@ -10,6 +10,7 @@ class LocalizedValue extends Equatable {
   /// Localized text. For example: "15 ft" or "42 km".
   final String text;
 
+  // ignore: unused_element
   factory LocalizedValue._fromJson(Map<dynamic, dynamic> json) {
     return LocalizedValue._(json['value'], json['text']);
   }
