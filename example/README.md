@@ -1,8 +1,8 @@
-# yandex_mapkit_example
+# Example
 
 Demonstrates how to use the yandex_mapkit plugin.
 
-## Getting Started
+## Descriptions
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+This is a simplified version of the yandex_mapkit package, so in the example you will not find 
+features like Suggestions, Search, ReverseSearch, Bicycle, Driving.
