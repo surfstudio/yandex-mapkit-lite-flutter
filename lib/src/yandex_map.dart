@@ -26,6 +26,7 @@ class YandexMap extends StatefulWidget {
     this.nightModeEnabled = false,
     this.fastTapEnabled = false,
     this.mode2DEnabled = false,
+    this.movable = false,
     this.logoAlignment = const MapAlignment(horizontal: HorizontalAlignment.right, vertical: VerticalAlignment.bottom),
     this.focusRect,
     this.onMapCreated,
@@ -117,6 +118,16 @@ class YandexMap extends StatefulWidget {
 
   /// Called every time a [YandexMap] geo object is tapped.
   final ObjectTapCallback? onObjectTap;
+
+  /// This was added to the fork.
+  /// Whether Android uses `PlatformGLTextureView` or `PlatfromGLSurfaceView` for rendering a MapView component.
+  ///
+  /// First option will allow using `YandexMap` widget in any scrollable widget (ListView, GridView, etc.)
+  ///
+  /// Second option will not allow this operation, but expected to be more optimized.
+  ///
+  /// For more see: https://yandex.ru/dev/mapkit/doc/ru/com/yandex/mapkit/mapview/MapView
+  final bool movable;
 
   @override
   // ignore: library_private_types_in_public_api
@@ -277,7 +288,8 @@ class _YandexMapOptions {
     logoAlignment = map.logoAlignment,
     focusRect = map.focusRect,
     mapType = map.mapType,
-    poiLimit = map.poiLimit;
+    poiLimit = map.poiLimit,
+    movable = map.movable;
 
     final bool tiltGesturesEnabled;
 
@@ -292,6 +304,8 @@ class _YandexMapOptions {
     final bool fastTapEnabled;
 
     final bool mode2DEnabled;
+
+    final bool movable;
 
     final MapAlignment logoAlignment;
 
@@ -313,7 +327,8 @@ class _YandexMapOptions {
       'logoAlignment': logoAlignment.toJson(),
       'focusRect': focusRect?.toJson(),
       'mapType': mapType.index,
-      'poiLimit': poiLimit
+      'poiLimit': poiLimit,
+      'movable': movable,
     };
   }
 
