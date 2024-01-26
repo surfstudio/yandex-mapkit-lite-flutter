@@ -7,6 +7,9 @@ class Point extends Equatable {
     required this.longitude
   });
 
+  // This was added to the fork.
+  const Point.zero({this.latitude = 0, this.longitude = 0});
+
   /// The point's latitude.
   final double latitude;
 
