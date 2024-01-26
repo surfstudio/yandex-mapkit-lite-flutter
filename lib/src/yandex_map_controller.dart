@@ -29,48 +29,31 @@ class YandexMapController extends ChangeNotifier {
   /// Android: `android.permission.ACCESS_FINE_LOCATION`
   ///
   /// Does nothing if these permissions were denied
-  Future<void> toggleUserLayer({
-    required bool visible,
-    bool headingEnabled = true,
-    bool autoZoomEnabled = false,
-    UserLocationAnchor? anchor
-  }) async {
-    await _channel.invokeMethod(
-      'toggleUserLayer',
-      {
-        'visible': visible,
-        'headingEnabled': headingEnabled,
-        'autoZoomEnabled': autoZoomEnabled,
-        'anchor': anchor?.toJson()
-      }
-    );
+  Future<void> toggleUserLayer(
+      {required bool visible,
+      bool headingEnabled = true,
+      bool autoZoomEnabled = false,
+      UserLocationAnchor? anchor}) async {
+    await _channel.invokeMethod('toggleUserLayer', {
+      'visible': visible,
+      'headingEnabled': headingEnabled,
+      'autoZoomEnabled': autoZoomEnabled,
+      'anchor': anchor?.toJson()
+    });
   }
 
   /// Toggles layer with traffic information
-  Future<void> toggleTrafficLayer({
-    required bool visible
-  }) async {
-    await _channel.invokeMethod(
-      'toggleTrafficLayer',
-      {
-        'visible': visible
-      }
-    );
+  Future<void> toggleTrafficLayer({required bool visible}) async {
+    await _channel.invokeMethod('toggleTrafficLayer', {'visible': visible});
   }
 
   /// Selects a geo object with the specified objectId in the specified layerId with specified dataSourceName.
   /// If the object is not currently on the screen, it is selected anyway, but the user will not actually see that.
   /// You need to move the camera in addition to this call to be sure that the selected object is visible for the user.
-  Future<void> selectGeoObject({
-    required String objectId,
-    required String layerId,
-    required String dataSourceName
-  }) async {
-    await _channel.invokeMethod('selectGeoObject', {
-      'objectId': objectId,
-      'layerId': layerId,
-      'dataSourceName': dataSourceName
-    });
+  Future<void> selectGeoObject(
+      {required String objectId, required String layerId, required String dataSourceName}) async {
+    await _channel
+        .invokeMethod('selectGeoObject', {'objectId': objectId, 'layerId': layerId, 'dataSourceName': dataSourceName});
   }
 
   /// Resets the currently selected geo object.
@@ -95,16 +78,11 @@ class YandexMapController extends ChangeNotifier {
   /// Returns true if camera position has been succesfully changes
   /// Returns false if camera position movement has been canceled
   /// (for example, as a result of a subsequent request for camera movement)
-  Future<bool> moveCamera(CameraUpdate cameraUpdate, {
-    MapAnimation? animation
-  }) async {
-    return await _channel.invokeMethod(
-      'moveCamera',
-      {
-        'cameraUpdate': cameraUpdate.toJson(),
-        'animation': animation?.toJson(),
-      }
-    );
+  Future<bool> moveCamera(CameraUpdate cameraUpdate, {MapAnimation? animation}) async {
+    return await _channel.invokeMethod('moveCamera', {
+      'cameraUpdate': cameraUpdate.toJson(),
+      'animation': animation?.toJson(),
+    });
   }
 
   /// Transforms the position from map coordinates to screen coordinates.
@@ -150,17 +128,13 @@ class YandexMapController extends ChangeNotifier {
   }
 
   // Returns min available zoom for visible map region
-  Future<void> setMinZoom({required double zoom }) async {
-    await _channel.invokeMethod('setMinZoom', {
-      'zoom': zoom
-    });
+  Future<void> setMinZoom({required double zoom}) async {
+    await _channel.invokeMethod('setMinZoom', {'zoom': zoom});
   }
 
   // Returns max available zoom for visible map region
-  Future<void> setMaxZoom({required double zoom }) async {
-    await _channel.invokeMethod('setMaxZoom', {
-      'zoom': zoom
-    });
+  Future<void> setMaxZoom({required double zoom}) async {
+    await _channel.invokeMethod('setMaxZoom', {'zoom': zoom});
   }
 
   /// Returns current user position point
@@ -285,8 +259,14 @@ class YandexMapController extends ChangeNotifier {
       return;
     }
 
-    _yandexMapState.widget.onCameraPositionChanged!(CameraPosition._fromJson(arguments['cameraPosition']),
-        CameraUpdateReason.values[arguments['reason']], arguments['finished']);
+    final visibleRegion = arguments['visibleRegion'];
+
+    _yandexMapState.widget.onCameraPositionChanged!(
+      CameraPosition._fromJson(arguments['cameraPosition']),
+      CameraUpdateReason.values[arguments['reason']],
+      arguments['finished'],
+      visibleRegion != null ? VisibleRegion._fromJson(visibleRegion) : null,
+    );
   }
 
   Future<Map<String, dynamic>?> _onUserLocationAdded(dynamic arguments) async {
