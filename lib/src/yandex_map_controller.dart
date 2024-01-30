@@ -259,13 +259,11 @@ class YandexMapController extends ChangeNotifier {
       return;
     }
 
-    final visibleRegion = arguments['visibleRegion'];
-
     _yandexMapState.widget.onCameraPositionChanged!(
       CameraPosition._fromJson(arguments['cameraPosition']),
       CameraUpdateReason.values[arguments['reason']],
       arguments['finished'],
-      visibleRegion != null ? VisibleRegion._fromJson(visibleRegion) : null,
+      VisibleRegion._fromJson(arguments['visibleRegion']),
     );
   }
 
