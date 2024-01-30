@@ -206,18 +206,6 @@ class YandexMapController extends ChangeNotifier {
     await _channel.invokeMethod('updateMapOptions', options);
   }
 
-  // (sugina): This method was not in the current version, it was in the previous one, 3.3.3.
-  Future<void> updateMapObjectsFromCollection(List<MapObject> mapObjects) async {
-    final updatedMapObjectCollection = _yandexMapState._mapObjectCollection.copyWith(mapObjects: mapObjects);
-
-    final updates = MapObjectUpdates.from({_yandexMapState._mapObjectCollection}, {updatedMapObjectCollection});
-
-    // ignore: unawaited_futures
-    _updateMapObjects(updates.toJson());
-
-    _yandexMapState._mapObjectCollection = updatedMapObjectCollection;
-  }
-
   /// Changes map objects on the map
   Future<void> _updateMapObjects(Map<String, dynamic> updates) async {
     await _channel.invokeMethod('updateMapObjects', updates);
@@ -285,28 +273,41 @@ class YandexMapController extends ChangeNotifier {
       return;
     }
 
-    _yandexMapState.widget.onCameraPositionChanged!(CameraPosition._fromJson(arguments['cameraPosition']),
-        CameraUpdateReason.values[arguments['reason']], arguments['finished']);
+    _yandexMapState.widget.onCameraPositionChanged!(
+      CameraPosition._fromJson(arguments['cameraPosition']),
+      CameraUpdateReason.values[arguments['reason']],
+      arguments['finished']
+    );
   }
 
   Future<Map<String, dynamic>?> _onUserLocationAdded(dynamic arguments) async {
     final pin = PlacemarkMapObject(
-        mapId: const MapObjectId('user_location_pin'), point: Point._fromJson(arguments['pinPoint']));
+      mapId: const MapObjectId('user_location_pin'),
+      point: Point._fromJson(arguments['pinPoint'])
+    );
     final arrow = PlacemarkMapObject(
-        mapId: const MapObjectId('user_location_arrow'), point: Point._fromJson(arguments['arrowPoint']));
+      mapId: const MapObjectId('user_location_arrow'),
+      point: Point._fromJson(arguments['arrowPoint'])
+    );
     final accuracyCircle = CircleMapObject(
-        mapId: const MapObjectId('user_location_accuracy_circle'), circle: Circle._fromJson(arguments['circle']));
+      mapId: const MapObjectId('user_location_accuracy_circle'),
+      circle: Circle._fromJson(arguments['circle'])
+    );
     final view = UserLocationView._(arrow: arrow, pin: pin, accuracyCircle: accuracyCircle);
-    final newView = _yandexMapState.widget.onUserLocationAdded != null
-        ? (await _yandexMapState.widget.onUserLocationAdded!(view))
-        : view;
+    final newView = _yandexMapState.widget.onUserLocationAdded != null ?
+      (await _yandexMapState.widget.onUserLocationAdded!(view)) :
+      view;
     final newPin = newView?.pin.dup(pin.mapId) ?? pin;
     final newArrow = newView?.arrow.dup(arrow.mapId) ?? arrow;
     final newAccuracyCircle = newView?.accuracyCircle.dup(accuracyCircle.mapId) ?? accuracyCircle;
 
     _yandexMapState._nonRootMapObjects.addAll([newPin, newArrow, newAccuracyCircle]);
 
-    return {'pin': newPin.toJson(), 'arrow': newArrow.toJson(), 'accuracyCircle': newAccuracyCircle.toJson()};
+    return {
+      'pin': newPin.toJson(),
+      'arrow': newArrow.toJson(),
+      'accuracyCircle': newAccuracyCircle.toJson()
+    };
   }
 
   void _onClustersRemoved(dynamic arguments) {
@@ -322,10 +323,12 @@ class YandexMapController extends ChangeNotifier {
     final size = arguments['size'];
     final mapObject = _findMapObject(_yandexMapState._allMapObjects, id) as ClusterizedPlacemarkCollection;
     final placemarks = arguments['placemarkIds']
-        .map<PlacemarkMapObject>((el) => _findMapObject(mapObject.placemarks, el) as PlacemarkMapObject)
-        .toList();
+      .map<PlacemarkMapObject>((el) => _findMapObject(mapObject.placemarks, el) as PlacemarkMapObject)
+      .toList();
     final appearance = PlacemarkMapObject(
-        mapId: MapObjectId(arguments['appearancePlacemarkId']), point: Point._fromJson(arguments['point']));
+      mapId: MapObjectId(arguments['appearancePlacemarkId']),
+      point: Point._fromJson(arguments['point'])
+    );
     final cluster = Cluster._(size: size, appearance: appearance, placemarks: placemarks);
     final newAppearance = (await mapObject._clusterAdd(cluster))?.appearance ?? cluster.appearance;
 
@@ -339,10 +342,12 @@ class YandexMapController extends ChangeNotifier {
     final size = arguments['size'];
     final mapObject = _findMapObject(_yandexMapState._allMapObjects, id) as ClusterizedPlacemarkCollection;
     final placemarks = arguments['placemarkIds']
-        .map<PlacemarkMapObject>((el) => _findMapObject(mapObject.placemarks, el) as PlacemarkMapObject)
-        .toList();
-    final appearance =
-        _findMapObject(_yandexMapState._allMapObjects, arguments['appearancePlacemarkId']) as PlacemarkMapObject;
+      .map<PlacemarkMapObject>((el) => _findMapObject(mapObject.placemarks, el) as PlacemarkMapObject)
+      .toList();
+    final appearance = _findMapObject(
+      _yandexMapState._allMapObjects,
+      arguments['appearancePlacemarkId']
+    ) as PlacemarkMapObject;
     final cluster = Cluster._(size: size, appearance: appearance, placemarks: placemarks);
 
     mapObject._clusterTap(cluster);
