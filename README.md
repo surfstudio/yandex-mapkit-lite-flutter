@@ -141,7 +141,7 @@ AndroidYandexMap.useAndroidViewSurface = false;
 * [X] Setting map bounds
 * [X] Showing current user location
 * [X] Styling the map
-* [X] Working with geo objects
+* [X] Workking with geo objects
 
 **Changes in the fork**
 * [X] Add updateMapObjectsFromCollection to YandexMapController
