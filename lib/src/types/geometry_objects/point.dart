@@ -22,9 +22,6 @@ class Point extends Equatable {
   @override
   bool get stringify => true;
 
-  // This getter was added to the fork.
-  bool get isZero => latitude == 0 && longitude == 0;
-
   Map<String, dynamic> toJson() {
     return {
       'latitude': latitude,
