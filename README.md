@@ -133,7 +133,7 @@ AndroidYandexMap.useAndroidViewSurface = false;
 ```
 
 ### Features
-**From yandex_mapkit 3.4.0 package**
+
 * [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
 * [X] Working with collections of map objects
 * [X] Working with clusters
@@ -142,9 +142,3 @@ AndroidYandexMap.useAndroidViewSurface = false;
 * [X] Showing current user location
 * [X] Styling the map
 * [X] Workking with geo objects
-
-**Changes in the fork**
-* [X] Add updateMapObjectsFromCollection to YandexMapController
-* [X] Add isZero to Point
-* [X] Add Point.zero Point
-* [X] Add flag movable to YandexMap
