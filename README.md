@@ -1,4 +1,7 @@
-# yandex_mapkit
+# yandex_mapkit_lite
+
+**This is a simplified version of the yandex_mapkit 3.4.0 package.**
+Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
 A flutter plugin for displaying yandex maps on iOS and Android.
 
@@ -57,7 +60,7 @@ dependencies {
 ```
 
 * Specify your API key and locale in your custom application class.  
-If you don't have one the you can create it like so
+  If you don't have one the you can create it like so
 
 `android/app/src/main/.../MainApplication.java`
 
@@ -138,8 +141,5 @@ AndroidYandexMap.useAndroidViewSurface = false;
 * [X] Setting map bounds
 * [X] Showing current user location
 * [X] Styling the map
-* [X] Address suggestions
-* [X] Basic driving/bicycle routing
-* [X] Basic address direct/reverse search
 * [X] Workking with geo objects
-* [X] Showing current traffic conditions
+* 
