@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// Android specific settings for [YandexMap].
 class AndroidYandexMap {

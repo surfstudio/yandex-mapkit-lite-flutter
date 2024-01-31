@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// Defines a bitmap image.
 /// Used to provide Bitmap objects from different input sources.

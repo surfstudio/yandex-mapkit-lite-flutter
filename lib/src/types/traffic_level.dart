@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// The level of traffic.
 class TrafficLevel extends Equatable {

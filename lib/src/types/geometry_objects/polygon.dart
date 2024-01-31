@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A polygon with one or more polygons in it.
 /// The exterior and interior areas are specified using LinearRing.

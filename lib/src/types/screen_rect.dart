@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A rectangle on the device screen.
 class ScreenRect extends Equatable {

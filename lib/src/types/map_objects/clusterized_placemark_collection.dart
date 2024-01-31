@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A collection of [PlacemarkMapObject] to be displayed on [YandexMap]
 ///

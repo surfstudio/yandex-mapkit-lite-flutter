@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A value respecting the device locale.
 class LocalizedValue extends Equatable {
@@ -10,6 +10,7 @@ class LocalizedValue extends Equatable {
   /// Localized text. For example: "15 ft" or "42 km".
   final String text;
 
+  // ignore: unused_element
   factory LocalizedValue._fromJson(Map<dynamic, dynamic> json) {
     return LocalizedValue._(json['value'], json['text']);
   }
