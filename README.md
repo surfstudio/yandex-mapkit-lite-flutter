@@ -1,5 +1,28 @@
 # yandex_mapkit_lite
 
+**This library is a fork of the package yandex_mapkit 3.4.0.**
+Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
+
+### Features
+
+* [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
+* [X] Working with collections of map objects
+* [X] Working with clusters
+* [X] Moving around the map
+* [X] Setting map bounds
+* [X] Showing current user location
+* [X] Styling the map
+* [X] Working with geo objects
+
+**Removed:**
+* [X] Address suggestions
+* [X] Basic driving/bicycle routing
+* [X] Basic address direct/reverse search
+* [X] Showing current traffic conditions
+
+❗️If you need all the features, we recommend using the original package [yandex_mapkit](https://pub.dev/packages/yandex_mapkit)
+
+
 **This is a simplified version of the yandex_mapkit 3.4.0 package.**
 Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
@@ -131,15 +154,3 @@ Place this anywhere in your code, before using `YandexMap` widget.
 ```dart
 AndroidYandexMap.useAndroidViewSurface = false;
 ```
-
-### Features
-
-* [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
-* [X] Working with collections of map objects
-* [X] Working with clusters
-* [X] Moving around the map
-* [X] Setting map bounds
-* [X] Showing current user location
-* [X] Styling the map
-* [X] Workking with geo objects
-* 
