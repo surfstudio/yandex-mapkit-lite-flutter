@@ -1,5 +1,14 @@
 # yandex_mapkit_lite
 
+[![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/main.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
+[![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/yandex-mapkit-lite-flutter?logo=codecov&logoColor=white)](https://app.codecov.io/gh/surfstudio/yandex-mapkit-lite-flutter)
+[![Pub Version](https://img.shields.io/pub/v/yandex_mapkit_lite?logo=dart&logoColor=white)](https://pub.dev/packages/yandex_mapkit_lite)
+[![Pub Likes](https://badgen.net/pub/likes/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite)
+[![Pub popularity](https://badgen.net/pub/popularity/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite/score)
+![Flutter Platform](https://badgen.net/pub/flutter-platform/yandex_mapkit_lite)
+
+## Description
+
 **This library is a fork of the package yandex_mapkit 3.4.0.**
 Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
@@ -33,6 +42,15 @@ A flutter plugin for displaying yandex maps on iOS and Android.
 
 __Disclaimer__: This project uses Yandex Mapkit which belongs to Yandex  
 When using Mapkit refer to these [terms of use](https://yandex.com/dev/mapkit/doc/en/conditions)
+
+## Installation
+
+Add `yandex_mapkit_lite` to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  yandex_mapkit_lite: $currentVersion$
+```
 
 ## Getting Started
 
@@ -129,15 +147,6 @@ In the end it should look like the following
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
       android:name=".MainApplication" >
-```
-
-## Installation
-
-Add `yandex_mapkit_lite` to your `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  yandex_mapkit_lite: $currentVersion$
 ```
 
 ### Usage
