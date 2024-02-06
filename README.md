@@ -149,7 +149,7 @@ In the end it should look like the following
       android:name=".MainApplication" >
 ```
 
-### Usage
+### Example
 
 For usage examples refer to example [app](https://github.com/Unact/yandex_mapkit/tree/master/example)
 
