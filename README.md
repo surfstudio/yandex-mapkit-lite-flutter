@@ -131,6 +131,15 @@ In the end it should look like the following
       android:name=".MainApplication" >
 ```
 
+## Installation
+
+Add `yandex_mapkit_lite` to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  yandex_mapkit_lite: $currentVersion$
+```
+
 ### Usage
 
 For usage examples refer to example [app](https://github.com/Unact/yandex_mapkit/tree/master/example)
