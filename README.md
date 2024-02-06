@@ -3,6 +3,9 @@
 **This library is a fork of the package yandex_mapkit 3.4.0.**
 Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
+Add somewhere in the description that the lite version of Yandex maps is used on the native side of the connection.
+This version of the map can reduce the size of the application by an average of 30%.
+
 ### Features
 
 * [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
@@ -21,10 +24,6 @@ Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been 
 * [X] Showing current traffic conditions
 
 ❗️If you need all the features, we recommend using the original package [yandex_mapkit](https://pub.dev/packages/yandex_mapkit)
-
-
-**This is a simplified version of the yandex_mapkit 3.4.0 package.**
-Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
 A flutter plugin for displaying yandex maps on iOS and Android.
 
