@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A rectangular box around the object.
 class BoundingBox extends Equatable {

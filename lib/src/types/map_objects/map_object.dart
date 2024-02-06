@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// Uniquely identifies object an among all [MapObjectCollection.mapObjects] of a specific type.
 class MapObjectId extends Equatable {

@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A number placemarks grouped into single placemark created for [ClusterizedPlacemarkCollection]
 /// [Cluster]

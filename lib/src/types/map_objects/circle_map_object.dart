@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A circle to be displayed on [YandexMap].
 class CircleMapObject extends Equatable implements MapObject<CircleMapObject> {

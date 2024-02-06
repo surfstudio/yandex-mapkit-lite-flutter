@@ -1,4 +1,4 @@
-part of yandex_mapkit;
+part of yandex_mapkit_lite;
 
 /// A polygon to be displayed on [YandexMap]
 class PolygonMapObject extends Equatable implements MapObject {

@@ -1,4 +1,29 @@
-# yandex_mapkit
+# yandex_mapkit_lite
+
+**This library is a fork of the package yandex_mapkit 3.4.0.**
+Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
+
+Add somewhere in the description that the lite version of Yandex maps is used on the native side of the connection.
+This version of the map can reduce the size of the application by an average of 30%.
+
+### Features
+
+* [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
+* [X] Working with collections of map objects
+* [X] Working with clusters
+* [X] Moving around the map
+* [X] Setting map bounds
+* [X] Showing current user location
+* [X] Styling the map
+* [X] Working with geo objects
+
+**Removed:**
+* [X] Address suggestions
+* [X] Basic driving/bicycle routing
+* [X] Basic address direct/reverse search
+* [X] Showing current traffic conditions
+
+❗️If you need all the features, we recommend using the original package [yandex_mapkit](https://pub.dev/packages/yandex_mapkit)
 
 A flutter plugin for displaying yandex maps on iOS and Android.
 
@@ -57,7 +82,7 @@ dependencies {
 ```
 
 * Specify your API key and locale in your custom application class.  
-If you don't have one the you can create it like so
+  If you don't have one the you can create it like so
 
 `android/app/src/main/.../MainApplication.java`
 
@@ -128,18 +153,3 @@ Place this anywhere in your code, before using `YandexMap` widget.
 ```dart
 AndroidYandexMap.useAndroidViewSurface = false;
 ```
-
-### Features
-
-* [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
-* [X] Working with collections of map objects
-* [X] Working with clusters
-* [X] Moving around the map
-* [X] Setting map bounds
-* [X] Showing current user location
-* [X] Styling the map
-* [X] Address suggestions
-* [X] Basic driving/bicycle routing
-* [X] Basic address direct/reverse search
-* [X] Workking with geo objects
-* [X] Showing current traffic conditions

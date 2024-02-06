@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   permission_handler: ^10.4.0
-  yandex_mapkit:
+  yandex_mapkit_lite:
     path: ../
 
 dev_dependencies:
