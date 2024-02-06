@@ -3,3 +3,4 @@ exclude:
 
 ignore:
   - analyzer
+  - flutter_plugin_android_lifecycle
