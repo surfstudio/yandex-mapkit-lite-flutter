@@ -26,13 +26,14 @@ jobs:
     with:
       flutter-version: ${{ needs.get_fvm_version.outputs.flutter_version }}
 
-  testing:
-    needs: [analysis, get_fvm_version]
-    uses: surfstudio/flutter-ci-workflows/.github/workflows/testing.yml@main
-    with:
-      flutter-version: ${{ needs.get_fvm_version.outputs.flutter_version }}
-    secrets:
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+#  The original yandex_mapkit package does not contain tests.
+#  testing:
+#    needs: [analysis, get_fvm_version]
+#    uses: surfstudio/flutter-ci-workflows/.github/workflows/testing.yml@main
+#    with:
+#      flutter-version: ${{ needs.get_fvm_version.outputs.flutter_version }}
+#    secrets:
+#      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   package-publishing:
     needs: [analysis, testing, get_fvm_version]
