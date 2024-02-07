@@ -36,7 +36,7 @@ jobs:
 #      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   package-publishing:
-    needs: [analysis, testing, get_fvm_version]
+    needs: [analysis, get_fvm_version]
     uses: surfstudio/flutter-ci-workflows/.github/workflows/publish_to_pub.yml@main
     with:
       flutter-version: ${{ needs.get_fvm_version.outputs.flutter_version }}
