@@ -10,10 +10,13 @@
 ## Description
 
 **This library is a fork of the package yandex_mapkit 3.4.0.**
-Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
-Add somewhere in the description that the lite version of Yandex maps is used on the native side of the connection.
-This version of the map can reduce the size of the application by an average of 30%.
+**yandex_mapkit** implements the functionality of MapKit full version (https://yandex.ru/dev/mapkit/doc/en/).
+
+**yandex_mapkit_lite** contains basic MapKit features, including working with the map, a traffic layer, 
+offline maps (only in the paid version), LocationManager, and UserLocationLayer.
+
+Using the lite version of MapKit allows you to reduce the application size by an average of 30%.
 
 ### Features
 
