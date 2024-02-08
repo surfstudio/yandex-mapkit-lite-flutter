@@ -9,7 +9,6 @@ import com.yandex.mapkit.RequestPoint;
 import com.yandex.mapkit.RequestPointType;
 import com.yandex.mapkit.ScreenPoint;
 import com.yandex.mapkit.ScreenRect;
-import com.yandex.mapkit.directions.driving.DrivingOptions;
 import com.yandex.mapkit.geometry.BoundingBox;
 import com.yandex.mapkit.geometry.Circle;
 import com.yandex.mapkit.geometry.Geometry;
@@ -21,8 +20,6 @@ import com.yandex.mapkit.geometry.Polyline;
 import com.yandex.mapkit.map.CameraPosition;
 import com.yandex.mapkit.map.Rect;
 import com.yandex.mapkit.map.VisibleRegion;
-import com.yandex.mapkit.search.SearchOptions;
-import com.yandex.mapkit.search.SuggestOptions;
 import com.yandex.runtime.Error;
 import com.yandex.runtime.network.NetworkError;
 import com.yandex.runtime.network.RemoteError;
@@ -66,48 +63,6 @@ public class Utils {
       RequestPointType.values()[(Integer) json.get("requestPointType")],
       null,
       null
-    );
-  }
-
-  public static DrivingOptions drivingOptionsFromJson(Map<String, Object> json) {
-    return new DrivingOptions(
-      (Double) json.get("initialAzimuth"),
-      (Integer) json.get("routesCount"),
-      (Boolean) json.get("avoidTolls"),
-      (Boolean) json.get("avoidUnpaved"),
-      (Boolean) json.get("avoidPoorConditions"),
-      null,
-      null
-    );
-  }
-
-  @SuppressWarnings({"unchecked", "ConstantConditions"})
-  public static SearchOptions searchOptionsFromJson(Map<String, Object> json) {
-    Point userPosition = json.get("userPosition") != null ?
-      pointFromJson((Map<String, Object>) json.get("userPosition")) :
-      null;
-
-    return new SearchOptions(
-      ((Number) json.get("searchType")).intValue(),
-      (Integer) json.get("resultPageSize"),
-      userPosition,
-      (String) json.get("origin"),
-      (Boolean) json.get("geometry"),
-      (Boolean) json.get("disableSpellingCorrection"),
-      null
-    );
-  }
-
-  @SuppressWarnings({"unchecked", "ConstantConditions"})
-  public static SuggestOptions suggestOptionsFromJson(Map<String, Object> json) {
-    Point userPosition = json.get("userPosition") != null ?
-      pointFromJson((Map<String, Object>) json.get("userPosition")) :
-      null;
-
-    return new SuggestOptions(
-      ((Number) json.get("suggestType")).intValue(),
-      userPosition,
-      ((Boolean) json.get("suggestWords"))
     );
   }
 

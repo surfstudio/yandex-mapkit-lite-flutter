@@ -10,6 +10,7 @@ import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.embedding.engine.plugins.lifecycle.FlutterLifecycleAdapter;
 import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel;
 
 public class YandexMapkitPlugin implements FlutterPlugin, ActivityAware {
   private static final String VIEW_TYPE = "yandex_mapkit/yandex_map";
