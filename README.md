@@ -91,11 +91,11 @@ platform :ios, '12.0'
 
 ### Setup for Android
 
-* Add dependency `implementation 'com.yandex.android:maps.mobile:4.4.0-full'` to `android/app/build.gradle`
+* Add dependency `implementation 'com.yandex.android:maps.mobile:4.4.0-lite'` to `android/app/build.gradle`
 
 ```groovy
 dependencies {
-    implementation 'com.yandex.android:maps.mobile:4.4.0-full'
+    implementation 'com.yandex.android:maps.mobile:4.4.0-lite'
 }
 ```
 
