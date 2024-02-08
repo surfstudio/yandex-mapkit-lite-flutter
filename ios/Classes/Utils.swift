@@ -45,46 +45,6 @@ class Utils {
     return YMKRequestPoint(point: point, type: pointType, pointContext: nil, drivingArrivalPointId: nil)
   }
 
-  static func drivingOptionsFromJson(_ json: [String: Any]) -> YMKDrivingDrivingOptions {
-    return YMKDrivingDrivingOptions(
-      initialAzimuth: json["initialAzimuth"] as? NSNumber,
-      routesCount: json["routesCount"] as? NSNumber,
-      avoidTolls: json["avoidTolls"] as? NSNumber,
-      avoidUnpaved: json["avoidUnpaved"] as? NSNumber,
-      avoidPoorConditions: json["avoidPoorConditions"] as? NSNumber,
-      departureTime: nil,
-      annotationLanguage: nil
-    )
-  }
-
-  static func searchOptionsFromJson(_ json: [String: Any]) -> YMKSearchOptions {
-    let userPosition = json["userPosition"] as? [String: Any] != nil ?
-      pointFromJson(json["userPosition"] as! [String: NSNumber]) :
-      nil
-
-    return YMKSearchOptions(
-      searchTypes: YMKSearchType(rawValue: (json["searchType"] as! NSNumber).uintValue),
-      resultPageSize: json["resultPageSize"] as? NSNumber,
-      userPosition: userPosition,
-      origin: json["origin"] as? String,
-      geometry: (json["geometry"] as! NSNumber).boolValue,
-      disableSpellingCorrection: (json["disableSpellingCorrection"] as! NSNumber).boolValue,
-      filters: nil
-    )
-  }
-
-  static func suggestOptionsFromJson(_ json: [String: Any]) -> YMKSuggestOptions {
-    let userPosition = json["userPosition"] as? [String: Any] != nil ?
-      pointFromJson(json["userPosition"] as! [String: NSNumber]) :
-      nil
-
-    return YMKSuggestOptions(
-      suggestTypes: YMKSuggestType.init(rawValue: (json["suggestType"] as! NSNumber).uintValue),
-      userPosition: userPosition,
-      suggestWords: (json["suggestWords"] as! NSNumber).boolValue
-    )
-  }
-
   static func geometryFromJson(_ json: [String: Any]) -> YMKGeometry {
     if let geometryPoint = json["point"] as? [String: NSNumber] {
       return YMKGeometry(point: pointFromJson(geometryPoint))
