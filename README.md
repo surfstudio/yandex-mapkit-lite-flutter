@@ -1,4 +1,4 @@
-# yandex_mapkit_lite
+![Yandex Mapkit Lite logo](/assets/yandex_mapkit_lite.png)
 
 [![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/main.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
 [![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/yandex-mapkit-lite-flutter?logo=codecov&logoColor=white)](https://app.codecov.io/gh/surfstudio/yandex-mapkit-lite-flutter)
@@ -6,66 +6,50 @@
 [![Pub Likes](https://badgen.net/pub/likes/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite)
 [![Pub popularity](https://badgen.net/pub/popularity/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite/score)
 ![Flutter Platform](https://badgen.net/pub/flutter-platform/yandex_mapkit_lite)
+[![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
-## Description
+---------
 
-**This library is a fork of the package yandex_mapkit 3.4.0.**
+Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but less heavy and more optimized.
 
-**yandex_mapkit** is based on MapKit full version (https://yandex.ru/dev/mapkit/doc/en/).
+Made by [Surf :surfer:](https://surf.dev/flutter/) Flutter team :cow2:
 
-**yandex_mapkit_lite** is based on MapKit lite version.
+## Features
 
-Using the lite version of MapKit allows you to reduce the application size by an average of 30%.
+- :earth_africa: Map overview - enables to view the map of the world, with which user can interact with any convinient way, usually in order to demonstrate the location of some place
+- :house: Custom map objects - enables for developers to add custom map objects in order to indicate some place on the map
+- :video_game: Convinient map controls - there is an API for straight-to-point map controls through the code - from zooming and moving to limiting user scroll and controlling the speed
+- :leaves: App bundle size reduction - the average bundle size reduction for 25% comparing to projects with [original package](https://pub.dev/packages/yandex_mapkit)
+- :sparkles: Recommended for use if you don't need anything but basic map
 
-### Features yandex_mapkit_lite:
+## Usage
 
-* [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
-* [X] Working with collections of map objects
-* [X] Working with clusters
-* [X] Moving around the map
-* [X] Setting map bounds
-* [X] Showing current user location
-* [X] Styling the map
-* [X] Working with geo objects
+### Generate your API Key
 
-*Removed from yandex_mapkit:*
-* [X] Address suggestions
-* [X] Basic driving/bicycle routing
-* [X] Basic address direct/reverse search
-* [X] Showing current traffic conditions
+Before you can use MapKit SDK in your application, you need the **API key**.
 
-❗️If you need all the features, we recommend using the original package [yandex_mapkit](https://pub.dev/packages/yandex_mapkit)
+1) Go to the [Developer Dashboard.](https://developer.tech.yandex.ru/services/)
 
-## Platform
+2) **Log in** to your Yandex account or **create** a new one.
 
-A flutter plugin for displaying yandex maps on iOS and Android.
+3) Click **Connect APIs** and choose **MapKit Mobile SDK**.
 
-|             | Android |   iOS   |
-|-------------|---------|---------|
-| __Support__ | SDK 21+ | iOS 12+ |
+4) Enter information about yourself and your project, select a pricing plan, and click **Continue**.
 
-__Disclaimer__: This project uses Yandex Mapkit which belongs to Yandex  
-When using Mapkit refer to these [terms of use](https://yandex.com/dev/mapkit/doc/en/conditions)
+5) After your API key is successfully created, it will be available in the **API Interfaces → MapKit Mobile SDK** tab.
 
-## Installation
+### Installation
 
 Add `yandex_mapkit_lite` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  yandex_mapkit_lite: $currentVersion$
+  yandex_mapkit_lite: ^0.0.1+1
 ```
-
-## Getting Started
-
-### Generate your API Key
-
-1. Go to https://developer.tech.yandex.ru/services/
-2. Create a `MapKit Mobile SDK` key
 
 ### Setup for iOS
 
-* Specify your API key and locale in `ios/Runner/AppDelegate.swift`. It should be similar to the following
+Specify your API key and locale in `ios/Runner/AppDelegate.swift`. It should be similar to the following
 
 ```swift
 import UIKit
@@ -86,7 +70,7 @@ import YandexMapsMobile
 }
 ```
 
-* Uncomment `platform :ios, '9.0'` in `ios/Podfile` and change to `platform :ios, '12.0'`
+Uncomment `platform :ios, '9.0'` in `ios/Podfile` and change to `platform :ios, '12.0'`
 
 ```ruby
 # Uncomment this line to define a global platform for your project
@@ -95,7 +79,7 @@ platform :ios, '12.0'
 
 ### Setup for Android
 
-* Add dependency `implementation 'com.yandex.android:maps.mobile:4.4.0-lite'` to `android/app/build.gradle`
+Add dependency `implementation 'com.yandex.android:maps.mobile:4.4.0-lite'` to `android/app/build.gradle`
 
 ```groovy
 dependencies {
@@ -103,8 +87,7 @@ dependencies {
 }
 ```
 
-* Specify your API key and locale in your custom application class.  
-  If you don't have one the you can create it like so
+Specify your API key and locale in your custom application class. If you don't have one the you can create it like so
 
 `android/app/src/main/.../MainApplication.java`
 
@@ -139,39 +122,61 @@ class MainApplication: Application() {
 }
 ```
 
-* In your `android/app/src/main/AndroidManifest.xml`
-
-Add permissions `<uses-permission android:name="android.permission.INTERNET"/>` and `<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>`
-
-Find `application` tag and replace `android:name` to the name of your custom application class prefixed by a dot `.`.
-In the end it should look like the following
+In your `android/app/src/main/AndroidManifest.xml` Add necessary permissions:
 
 ```xml
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <application
-      android:name=".MainApplication" >
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
 
-### Example
+## Comparison with the full version
 
-For usage examples refer to example [app](https://github.com/Unact/yandex_mapkit/tree/master/example)
+It is recommended to take into account the drawbacks of this mapkit version.
 
-![image](https://user-images.githubusercontent.com/8961745/100362969-26e23880-300d-11eb-9529-6ab36beffa51.png)
+For app bundle size optimization purposes, the original package was moved to lite version, so some functionality will not be included:
 
-### Additional remarks
+|                                              | Full version       | Lite version       |
+|----------------------------------------------|--------------------|--------------------|
+| Map                                          | :white_check_mark: | :white_check_mark: |
+| Traffic layer                                | :white_check_mark: | :white_check_mark: |
+| Offline maps                                 | :white_check_mark: | :white_check_mark: |
+| Location manager                             | :white_check_mark: | :white_check_mark: |
+| User location layer                          | :white_check_mark: | :white_check_mark: |
+| Automobile, bicycle, and pedestrian routing  | :white_check_mark: | :x:                |
+| Routing taking into account public transport | :white_check_mark: | :x:                |
+| Search, hints, geocoding                     | :white_check_mark: | :x:                |
+| Panorama display                             | :white_check_mark: | :x:                |
 
-YandexMapkit always works with __one language__ only.  
-Due to native constraints after the application is launched it can't be changed.
+If your app needs functionality mentioned upper, that is not supported in lite version, consider using [full](https://pub.dev/packages/yandex_mapkit) version.
 
-#### Android
+## Issues
 
-##### Hybrid Composition
+### Minimal versions
 
-By default android views are rendered using [Hybrid Composition](https://flutter.dev/docs/development/platform-integration/platform-views).
-To render the `YandexMap` widget on Android using Virtual Display(old composition), set AndroidYandexMap.useAndroidViewSurface to false.
-Place this anywhere in your code, before using `YandexMap` widget.
+There is OS version and platform restrictions for this package. The table for supported platforms and versions of their OS is presented lower:
+
+|             | Android |   iOS   |
+|-------------|---------|---------|
+| **Support** | SDK 21+ | iOS 12+ |
+
+### Localizations
+
+Mapkit can be used with one language only at the same time.
+
+Due to native constraints after the application is launched language can't be changed.
+
+### Android
+
+#### Hybrid Composition
+
+By default android views are rendered using [Hybrid Composition](https://flutter.dev/docs/development/platform-integration/platform-views). In order to render the `YandexMap` widget on Android using Virtual Display (old composition), set [AndroidYandexMap.useAndroidViewSurface] to false before using `YandexMap` widget.
 
 ```dart
 AndroidYandexMap.useAndroidViewSurface = false;
 ```
+
+### Terms of use
+
+**Disclaimer**: This project uses Yandex Mapkit which belongs to Yandex. When using Mapkit refer to these [terms of use](https://yandex.com/dev/mapkit/doc/en/conditions).
+
+Credits to [Unact](https://github.com/Unact).
