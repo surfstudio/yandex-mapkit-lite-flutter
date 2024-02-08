@@ -11,14 +11,13 @@
 
 **This library is a fork of the package yandex_mapkit 3.4.0.**
 
-**yandex_mapkit** implements the functionality of MapKit full version (https://yandex.ru/dev/mapkit/doc/en/).
+**yandex_mapkit** is based on MapKit full version (https://yandex.ru/dev/mapkit/doc/en/).
 
-**yandex_mapkit_lite** contains basic MapKit features, including working with the map, a traffic layer, 
-offline maps (only in the paid version), LocationManager, and UserLocationLayer.
+**yandex_mapkit_lite** is based on MapKit lite version.
 
 Using the lite version of MapKit allows you to reduce the application size by an average of 30%.
 
-### Features
+### Features yandex_mapkit_lite:
 
 * [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
 * [X] Working with collections of map objects
@@ -29,13 +28,15 @@ Using the lite version of MapKit allows you to reduce the application size by an
 * [X] Styling the map
 * [X] Working with geo objects
 
-**Removed:**
+*Removed from yandex_mapkit:*
 * [X] Address suggestions
 * [X] Basic driving/bicycle routing
 * [X] Basic address direct/reverse search
 * [X] Showing current traffic conditions
 
 ❗️If you need all the features, we recommend using the original package [yandex_mapkit](https://pub.dev/packages/yandex_mapkit)
+
+## Platform
 
 A flutter plugin for displaying yandex maps on iOS and Android.
 
