@@ -1,4 +1,8 @@
-![Yandex Mapkit Lite logo](/assets/yandex_mapkit_lite.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/b1ca707b-b162-43d5-a9b1-d1895ab99e14">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/f88243c6-26f0-4491-93bd-baf4ad5a5e50">
+  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/f88243c6-26f0-4491-93bd-baf4ad5a5e50">
+</picture>
 
 [![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/main.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
 [![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/yandex-mapkit-lite-flutter?logo=codecov&logoColor=white)](https://app.codecov.io/gh/surfstudio/yandex-mapkit-lite-flutter)
@@ -14,7 +18,7 @@ Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but les
 
 Made by [Surf :surfer:](https://surf.dev/flutter/) Flutter team :cow2:
 
-## Features
+## Description
 
 - :earth_africa: Map overview - enables to view the map of the world, with which user can interact with any convinient way, usually in order to demonstrate the location of some place
 - :house: Custom map objects - enables for developers to add custom map objects in order to indicate some place on the map
@@ -166,6 +170,10 @@ Mapkit can be used with one language only at the same time.
 Due to native constraints after the application is launched language can't be changed.
 
 ### Android
+
+### Example
+
+Example project is soon to be refactored.
 
 #### Hybrid Composition
 
