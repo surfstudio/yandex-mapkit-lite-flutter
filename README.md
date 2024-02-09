@@ -10,12 +10,14 @@
 ## Description
 
 **This library is a fork of the package yandex_mapkit 3.4.0.**
-Features such as Suggestions, Search, ReverseSearch, Bicycle, Driving have been removed from it.
 
-Add somewhere in the description that the lite version of Yandex maps is used on the native side of the connection.
-This version of the map can reduce the size of the application by an average of 30%.
+**yandex_mapkit** is based on MapKit full version (https://yandex.ru/dev/mapkit/doc/en/).
 
-### Features
+**yandex_mapkit_lite** is based on MapKit lite version.
+
+Using the lite version of MapKit allows you to reduce the application size by an average of 30%.
+
+### Features yandex_mapkit_lite:
 
 * [X] Working with Placemarks/Polylines/Polygons/Circles - adding, updating, removing, tap events, styling
 * [X] Working with collections of map objects
@@ -26,13 +28,15 @@ This version of the map can reduce the size of the application by an average of 
 * [X] Styling the map
 * [X] Working with geo objects
 
-**Removed:**
+*Removed from yandex_mapkit:*
 * [X] Address suggestions
 * [X] Basic driving/bicycle routing
 * [X] Basic address direct/reverse search
 * [X] Showing current traffic conditions
 
 ❗️If you need all the features, we recommend using the original package [yandex_mapkit](https://pub.dev/packages/yandex_mapkit)
+
+## Platform
 
 A flutter plugin for displaying yandex maps on iOS and Android.
 
@@ -91,11 +95,11 @@ platform :ios, '12.0'
 
 ### Setup for Android
 
-* Add dependency `implementation 'com.yandex.android:maps.mobile:4.4.0-full'` to `android/app/build.gradle`
+* Add dependency `implementation 'com.yandex.android:maps.mobile:4.4.0-lite'` to `android/app/build.gradle`
 
 ```groovy
 dependencies {
-    implementation 'com.yandex.android:maps.mobile:4.4.0-full'
+    implementation 'com.yandex.android:maps.mobile:4.4.0-lite'
 }
 ```
 
