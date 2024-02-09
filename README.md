@@ -180,3 +180,16 @@ AndroidYandexMap.useAndroidViewSurface = false;
 **Disclaimer**: This project uses Yandex Mapkit which belongs to Yandex. When using Mapkit refer to these [terms of use](https://yandex.com/dev/mapkit/doc/en/conditions).
 
 Credits to [Unact](https://github.com/Unact).
+
+## Contribute
+
+To report your issues, submit them directly in the [Issues](https://github.com/surfstudio/yandex-mapkit-lite-flutter/issues) section.
+
+If you would like to contribute to the package (e.g. by improving the documentation, fixing a bug or adding a cool new feature), please read our [contribution guide](./CONTRIBUTING.md) first and send us your pull request.
+
+Your PRs are always welcome.
+
+## How to reach us
+
+Please feel free to ask any questions about this package. Join our community chat on Telegram. We speak English and Russian.
+[![Telegram](https://img.shields.io/badge/chat-on%20Telegram-blue.svg)](https://t.me/surf_flutter)
