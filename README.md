@@ -133,6 +133,130 @@ In your `android/app/src/main/AndroidManifest.xml` Add necessary permissions:
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
 
+## Example
+
+### Setup separate widget with map
+
+We do not advise you to mix map widget with your screens and other instances - map widget is pretty heavy and can cause huge frame losses.
+
+Additionaly, the map requires some time to warm up and load resources. The recomended way is to make controller nullable, so if there is
+any interactions with the map, they would be ignored until map is initialized.
+
+If you wish to wait until map is loaded and then do something, consider using `Completer`.
+
+```dart
+
+class MapWidget extends StatelessWidget {
+  final List<MapObject> mapObjects;
+
+  final MapCreatedCallback? onControllerCreated;
+
+  final TrafficChangedCallback? onTrafficChanged;
+
+  final UserLocationCallback? onUserLocationUpdated;
+
+  final bool allowUserInteractions;
+
+  const MapWidget({
+    required this.mapObjects,
+    this.onControllerCreated,
+    this.onTrafficChanged,
+    this.onUserLocationUpdated,
+    this.allowUserInteractions = true,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return YandexMap(
+      tiltGesturesEnabled: allowUserInteractions,
+      rotateGesturesEnabled: allowUserInteractions,
+      scrollGesturesEnabled: allowUserInteractions,
+      zoomGesturesEnabled: allowUserInteractions,
+      fastTapEnabled: true,
+      onMapCreated: onControllerCreated,
+      mapObjects: mapObjects,
+      onTrafficChanged: onTrafficChanged,
+      onUserLocationAdded: onUserLocationUpdated,
+      nightModeEnabled: Theme.of(context).brightness == Brightness.dark,
+      logoAlignment: const MapAlignment(
+        horizontal: HorizontalAlignment.left,
+        vertical: VerticalAlignment.top,
+      ),
+    );
+  }
+}
+
+```
+
+### Explore and utilize functionality
+
+That's it! Now you can explore the documentation and use map widget for your needs!
+
+However, there are some flaws in this package, they are described in the `example` project, and we strongly advise you to consider it.
+
+```dart
+
+class MapScreen extends StatefulWidget {
+  const MapScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MapScreen> createState() => _MapScreenState();
+}
+
+class _MapScreenState extends State<MapScreen> {
+  YandexMapController? _controller;
+
+  final _mapObjects = <MapObject>[];
+
+  PlacemarkMapObject _buildPlacemark() {
+    return PlacemarkMapObject(
+      point: const Point(latitude: 59.945933, longitude: 30.320045),
+      mapId: const MapObjectId('placemark'),
+      icon: PlacemarkIcon.single(
+        PlacemarkIconStyle(
+          image: BitmapDescriptor.fromAssetImage('assets/place.png'),
+        ),
+      ),
+      text: PlacemarkText(
+        text: widget.count.toString(),
+        style: const PlacemarkTextStyle(
+          color: Colors.red,
+        ),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    _mapObjects.add(_buildPlacemark());
+
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant MapScreen oldWidget) {
+    if (oldWidget.count != widget.count) {
+      final newPlacemark = _buildPlacemark();
+
+      _mapObjects[0] = newPlacemark;
+
+      _controller?.moveCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(target: newPlacemark.point),
+        ),
+      );
+    }
+
+    super.didUpdateWidget(oldWidget);
+  }
+
+  ...
+
+}
+
+```
+
 ## Comparison with the full version
 
 It is recommended to take into account the drawbacks of this mapkit version.
@@ -153,6 +277,12 @@ For app bundle size optimization purposes, the original package was moved to lit
 
 If your app needs functionality mentioned upper, that is not supported in lite version, consider using [full](https://pub.dev/packages/yandex_mapkit) version.
 
+### Example project
+
+We strongly recommend to get known to the documentation of example project - there is a lot of valuable notes there.
+
+![Example project showcase](https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/2e964025-b70b-485e-80e4-f11e8fb6c898)
+
 ## Issues
 
 ### Minimal versions
@@ -170,10 +300,6 @@ Mapkit can be used with one language only at the same time.
 Due to native constraints after the application is launched language can't be changed.
 
 ### Android
-
-### Example
-
-Example project is soon to be refactored.
 
 #### Hybrid Composition
 
