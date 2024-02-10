@@ -252,7 +252,7 @@ class _MapScreenState extends State<MapScreen> {
 
 We strongly recommend to get known to the documentation of example project - there is a lot of valuable notes there.
 
-![Example project showcase](https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/2e964025-b70b-485e-80e4-f11e8fb6c898)
+https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/5ff3fd25-6728-4e41-9fc3-782ec5d8839a
 
 ## Issues
 
