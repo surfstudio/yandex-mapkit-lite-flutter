@@ -46,7 +46,8 @@ class TrafficMapStrategyDelegate extends MapStrategyDelegate {
                 /// Also starts sending traffic level updates to the [onTrafficLevelChanged] callback.
                 controller?.toggleTrafficLayer(visible: _trafficLayer);
               },
-              label: Text('Toggle traffic layer: ${_trafficLayer ? 'ON' : 'OFF'}'),
+              label:
+                  Text('Toggle traffic layer: ${_trafficLayer ? 'ON' : 'OFF'}'),
             ),
             const SizedBox(height: 8),
             FloatingActionButton.extended(

@@ -11,5 +11,6 @@ abstract class Assets {
 }
 
 abstract class Constants {
-  static const defaultLocation = Point(latitude: 55.751574, longitude: 37.573856);
+  static const defaultLocation =
+      Point(latitude: 55.751574, longitude: 37.573856);
 }

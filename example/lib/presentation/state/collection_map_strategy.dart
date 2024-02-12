@@ -75,13 +75,15 @@ class ClusterMapStrategyDelegate extends MapStrategyDelegate {
               if (_isClusterizationEnabled) ...[
                 FloatingActionButton.extended(
                   onPressed: switchClusterIconUpdate,
-                  label: Text('Switch cluster icon update: ${_alternativeClusterIconUpdate ? 'ON' : 'OFF'}'),
+                  label: Text(
+                      'Switch cluster icon update: ${_alternativeClusterIconUpdate ? 'ON' : 'OFF'}'),
                 ),
                 const SizedBox(height: 8),
               ],
               FloatingActionButton.extended(
                 onPressed: switchClusterization,
-                label: Text('Switch clusters: ${_isClusterizationEnabled ? 'ON' : 'OFF'}'),
+                label: Text(
+                    'Switch clusters: ${_isClusterizationEnabled ? 'ON' : 'OFF'}'),
               ),
             ],
           );
@@ -103,7 +105,9 @@ class ClusterMapStrategyDelegate extends MapStrategyDelegate {
       icon: PlacemarkIcon.single(
         PlacemarkIconStyle(
           image: BitmapDescriptor.fromAssetImage(
-            _selectedPlaces.contains(index) && !_alternativeClusterIconUpdate ? Assets.routeStart : Assets.routeEnd,
+            _selectedPlaces.contains(index) && !_alternativeClusterIconUpdate
+                ? Assets.routeStart
+                : Assets.routeEnd,
           ),
         ),
       ),
@@ -152,7 +156,8 @@ class ClusterMapStrategyDelegate extends MapStrategyDelegate {
           onClusterAdded: (self, cluster) async {
             return cluster.copyWith(
               appearance: PlacemarkMapObject(
-                mapId: MapObjectId('cluster_child_${cluster.appearance.mapId.value}'),
+                mapId: MapObjectId(
+                    'cluster_child_${cluster.appearance.mapId.value}'),
                 point: cluster.appearance.point,
                 icon: PlacemarkIcon.single(
                   PlacemarkIconStyle(
@@ -181,7 +186,8 @@ class ClusterMapStrategyDelegate extends MapStrategyDelegate {
       /// If clusterization workaorund is disabled, the selected placemarks will not be displayed,
       /// and we will try updating the placemark icon in the cluster, which will cause performance
       /// issues and visual bugs.
-      if (_alternativeClusterIconUpdate) ..._selectedPlaces.map(_createSelectedPlacemark),
+      if (_alternativeClusterIconUpdate)
+        ..._selectedPlaces.map(_createSelectedPlacemark),
     };
   }
 }

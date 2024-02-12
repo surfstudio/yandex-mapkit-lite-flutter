@@ -79,7 +79,8 @@ class DraggablePlacemarkMapStrategyDelegate extends MapStrategyDelegate {
           /// The only way is to use placemarks from the assets.
           icon: PlacemarkIcon.single(
             PlacemarkIconStyle(
-              image: BitmapDescriptor.fromAssetImage(_isDragging ? Assets.routeStart : Assets.routeEnd),
+              image: BitmapDescriptor.fromAssetImage(
+                  _isDragging ? Assets.routeStart : Assets.routeEnd),
             ),
           ),
         ),
