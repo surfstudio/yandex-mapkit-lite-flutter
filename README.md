@@ -13,7 +13,7 @@
 
 ---------
 
-Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but less heavy and more optimized.
+Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but lightweight and more appropriate for the majority of the apps.
 
 Made by [Surf :surfer:](https://surf.dev/flutter/) Flutter team :cow2:
 
@@ -22,7 +22,7 @@ Made by [Surf :surfer:](https://surf.dev/flutter/) Flutter team :cow2:
 - :earth_africa: Map overview - enables to view the map of the world, with which user can interact with any convinient way, usually in order to demonstrate the location of some place
 - :house: Custom map objects - enables for developers to add custom map objects in order to indicate some place on the map
 - :video_game: Convinient map controls - there is an API for straight-to-point map controls through the code - from zooming and moving to limiting user scroll and controlling the speed
-- :leaves: App bundle size reduction - the average bundle size reduction for 25% comparing to projects with [original package](https://pub.dev/packages/yandex_mapkit)
+- :leaves: App bundle size reduction - noticable app bundle size reduction comparing to projects with [original package](https://pub.dev/packages/yandex_mapkit)
 - :sparkles: Recommended for use if you don't need anything but basic map
 
 ## Usage
@@ -138,17 +138,17 @@ It is recommended to take into account the drawbacks of this mapkit version.
 
 For app bundle size optimization purposes, the original package was moved to lite version, so some functionality will not be included:
 
-|                                              | Full version       | Lite version       |
-|----------------------------------------------|--------------------|--------------------|
-| Map                                          | :white_check_mark: | :white_check_mark: |
-| Traffic layer                                | :white_check_mark: | :white_check_mark: |
-| Offline maps                                 | :white_check_mark: | :white_check_mark: |
-| Location manager                             | :white_check_mark: | :white_check_mark: |
-| User location layer                          | :white_check_mark: | :white_check_mark: |
-| Automobile, bicycle, and pedestrian routing  | :white_check_mark: | :x:                |
-| Routing taking into account public transport | :white_check_mark: | :x:                |
-| Search, hints, geocoding                     | :white_check_mark: | :x:                |
-| Panorama display                             | :white_check_mark: | :x:                |
+|                                              | Full version       | Lite version                                                                     |
+|----------------------------------------------|--------------------|----------------------------------------------------------------------------------|
+| Map                                          | :white_check_mark: | :white_check_mark:                                                               |
+| Traffic layer                                | :white_check_mark: | :white_check_mark:                                                               |
+| Offline maps                                 | :white_check_mark: | :white_check_mark:                                                               |
+| Location manager                             | :white_check_mark: | :white_check_mark:                                                               |
+| User location layer                          | :white_check_mark: | :white_check_mark:                                                               |
+| Search, hints, geocoding                     | :white_check_mark: | :x: - consider using [yandex_geocoder](https://pub.dev/packages/yandex_geocoder) |
+| Automobile, bicycle, and pedestrian routing  | :white_check_mark: | :x:                                                                              |
+| Routing taking into account public transport | :white_check_mark: | :x:                                                                              |
+| Panorama display                             | :white_check_mark: | :x:                                                                              |
 
 If your app needs functionality mentioned upper, that is not supported in lite version, consider using [full](https://pub.dev/packages/yandex_mapkit) version.
 
