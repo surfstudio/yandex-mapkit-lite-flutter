@@ -145,6 +145,7 @@ For app bundle size optimization purposes, the original package was moved to lit
 | Offline maps                                 | :white_check_mark: | :white_check_mark:                                                               |
 | Location manager                             | :white_check_mark: | :white_check_mark:                                                               |
 | User location layer                          | :white_check_mark: | :white_check_mark:                                                               |
+| Custom clusterization                        | :x:                | :white_check_mark: - see the example project                                     |
 | Search, hints, geocoding                     | :white_check_mark: | :x: - consider using [yandex_geocoder](https://pub.dev/packages/yandex_geocoder) |
 | Automobile, bicycle, and pedestrian routing  | :white_check_mark: | :x:                                                                              |
 | Routing taking into account public transport | :white_check_mark: | :x:                                                                              |
