@@ -758,7 +758,8 @@ public class YandexMapController implements
     arguments.put("cameraPosition", Utils.cameraPositionToJson(cameraPosition));
     arguments.put("reason", cameraUpdateReason.ordinal());
     arguments.put("finished", finished);
-
+    arguments.put("visibleRegion", Utils.visibleRegionToJson(map.getVisibleRegion()));
+    
     methodChannel.invokeMethod("onCameraPositionChanged", arguments);
   }
 
