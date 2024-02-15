@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - id: fvm_version
-        uses: zoexx/github-action-json-file-properties@release
+        uses: zoexx/github-action-json-file-properties@1.0.4
         with:
           file_path: ".fvm/fvm_config.json"
 
