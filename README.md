@@ -5,7 +5,6 @@
 </picture>
 
 [![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/main.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
-[![Coverage Status](https://img.shields.io/codecov/c/github/surfstudio/yandex-mapkit-lite-flutter?logo=codecov&logoColor=white)](https://app.codecov.io/gh/surfstudio/yandex-mapkit-lite-flutter)
 [![Pub Version](https://img.shields.io/pub/v/yandex_mapkit_lite?logo=dart&logoColor=white)](https://pub.dev/packages/yandex_mapkit_lite)
 [![Pub Likes](https://badgen.net/pub/likes/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite)
 [![Pub popularity](https://badgen.net/pub/popularity/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite/score)
@@ -14,7 +13,7 @@
 
 ---------
 
-Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but less heavy and more optimized.
+Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but lightweight and more appropriate for the majority of the apps.
 
 Made by [Surf :surfer:](https://surf.dev/flutter/) Flutter team :cow2:
 
@@ -23,7 +22,7 @@ Made by [Surf :surfer:](https://surf.dev/flutter/) Flutter team :cow2:
 - :earth_africa: Map overview - enables to view the map of the world, with which user can interact with any convinient way, usually in order to demonstrate the location of some place
 - :house: Custom map objects - enables for developers to add custom map objects in order to indicate some place on the map
 - :video_game: Convinient map controls - there is an API for straight-to-point map controls through the code - from zooming and moving to limiting user scroll and controlling the speed
-- :leaves: App bundle size reduction - the average bundle size reduction for 25% comparing to projects with [original package](https://pub.dev/packages/yandex_mapkit)
+- :leaves: App bundle size reduction - noticable app bundle size reduction comparing to projects with [original package](https://pub.dev/packages/yandex_mapkit)
 - :sparkles: Recommended for use if you don't need anything but basic map
 
 ## Usage
@@ -133,155 +132,25 @@ In your `android/app/src/main/AndroidManifest.xml` Add necessary permissions:
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
 
-## Example
-
-### Setup separate widget with map
-
-We do not advise you to mix map widget with your screens and other instances - map widget is pretty heavy and can cause huge frame losses.
-
-Additionaly, the map requires some time to warm up and load resources. The recomended way is to make controller nullable, so if there is
-any interactions with the map, they would be ignored until map is initialized.
-
-If you wish to wait until map is loaded and then do something, consider using `Completer`.
-
-```dart
-
-class MapWidget extends StatelessWidget {
-  final List<MapObject> mapObjects;
-
-  final MapCreatedCallback? onControllerCreated;
-
-  final TrafficChangedCallback? onTrafficChanged;
-
-  final UserLocationCallback? onUserLocationUpdated;
-
-  final bool allowUserInteractions;
-
-  const MapWidget({
-    required this.mapObjects,
-    this.onControllerCreated,
-    this.onTrafficChanged,
-    this.onUserLocationUpdated,
-    this.allowUserInteractions = true,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return YandexMap(
-      tiltGesturesEnabled: allowUserInteractions,
-      rotateGesturesEnabled: allowUserInteractions,
-      scrollGesturesEnabled: allowUserInteractions,
-      zoomGesturesEnabled: allowUserInteractions,
-      fastTapEnabled: true,
-      onMapCreated: onControllerCreated,
-      mapObjects: mapObjects,
-      onTrafficChanged: onTrafficChanged,
-      onUserLocationAdded: onUserLocationUpdated,
-      nightModeEnabled: Theme.of(context).brightness == Brightness.dark,
-      logoAlignment: const MapAlignment(
-        horizontal: HorizontalAlignment.left,
-        vertical: VerticalAlignment.top,
-      ),
-    );
-  }
-}
-
-```
-
-### Explore and utilize functionality
-
-That's it! Now you can explore the documentation and use map widget for your needs!
-
-However, there are some flaws in this package, they are described in the `example` project, and we strongly advise you to consider it.
-
-```dart
-
-class MapScreen extends StatefulWidget {
-  const MapScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MapScreen> createState() => _MapScreenState();
-}
-
-class _MapScreenState extends State<MapScreen> {
-  YandexMapController? _controller;
-
-  final _mapObjects = <MapObject>[];
-
-  PlacemarkMapObject _buildPlacemark() {
-    return PlacemarkMapObject(
-      point: const Point(latitude: 59.945933, longitude: 30.320045),
-      mapId: const MapObjectId('placemark'),
-      icon: PlacemarkIcon.single(
-        PlacemarkIconStyle(
-          image: BitmapDescriptor.fromAssetImage('assets/place.png'),
-        ),
-      ),
-      text: PlacemarkText(
-        text: widget.count.toString(),
-        style: const PlacemarkTextStyle(
-          color: Colors.red,
-        ),
-      ),
-    );
-  }
-
-  @override
-  void initState() {
-    _mapObjects.add(_buildPlacemark());
-
-    super.initState();
-  }
-
-  @override
-  void didUpdateWidget(covariant MapScreen oldWidget) {
-    if (oldWidget.count != widget.count) {
-      final newPlacemark = _buildPlacemark();
-
-      _mapObjects[0] = newPlacemark;
-
-      _controller?.moveCamera(
-        CameraUpdate.newCameraPosition(
-          CameraPosition(target: newPlacemark.point),
-        ),
-      );
-    }
-
-    super.didUpdateWidget(oldWidget);
-  }
-
-  ...
-
-}
-
-```
-
 ## Comparison with the full version
 
 It is recommended to take into account the drawbacks of this mapkit version.
 
 For app bundle size optimization purposes, the original package was moved to lite version, so some functionality will not be included:
 
-|                                              | Full version       | Lite version       |
-|----------------------------------------------|--------------------|--------------------|
-| Map                                          | :white_check_mark: | :white_check_mark: |
-| Traffic layer                                | :white_check_mark: | :white_check_mark: |
-| Offline maps                                 | :white_check_mark: | :white_check_mark: |
-| Location manager                             | :white_check_mark: | :white_check_mark: |
-| User location layer                          | :white_check_mark: | :white_check_mark: |
-| Automobile, bicycle, and pedestrian routing  | :white_check_mark: | :x:                |
-| Routing taking into account public transport | :white_check_mark: | :x:                |
-| Search, hints, geocoding                     | :white_check_mark: | :x:                |
-| Panorama display                             | :white_check_mark: | :x:                |
+|                                              | Full version       | Lite version                                                                     |
+|----------------------------------------------|--------------------|----------------------------------------------------------------------------------|
+| Map                                          | :white_check_mark: | :white_check_mark:                                                               |
+| Traffic layer                                | :white_check_mark: | :white_check_mark:                                                               |
+| Offline maps                                 | :white_check_mark: | :white_check_mark:                                                               |
+| Location manager                             | :white_check_mark: | :white_check_mark:                                                               |
+| User location layer                          | :white_check_mark: | :white_check_mark:                                                               |
+| Search, hints, geocoding                     | :white_check_mark: | :x: - consider using [yandex_geocoder](https://pub.dev/packages/yandex_geocoder) |
+| Automobile, bicycle, and pedestrian routing  | :white_check_mark: | :x:                                                                              |
+| Routing taking into account public transport | :white_check_mark: | :x:                                                                              |
+| Panorama display                             | :white_check_mark: | :x:                                                                              |
 
 If your app needs functionality mentioned upper, that is not supported in lite version, consider using [full](https://pub.dev/packages/yandex_mapkit) version.
-
-### Example project
-
-We strongly recommend to get known to the documentation of example project - there is a lot of valuable notes there.
-
-https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/5ff3fd25-6728-4e41-9fc3-782ec5d8839a
 
 ## Issues
 
@@ -300,6 +169,10 @@ Mapkit can be used with one language only at the same time.
 Due to native constraints after the application is launched language can't be changed.
 
 ### Android
+
+### Example
+
+Example project is soon to be refactored.
 
 #### Hybrid Composition
 
