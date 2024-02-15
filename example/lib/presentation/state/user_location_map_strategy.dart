@@ -59,4 +59,7 @@ class UserLocationMapStrategyDelegate extends MapStrategyDelegate {
 
   @override
   Set<MapObject> get mapObjects => {};
+
+  @override
+  String get title => "User location on the map";
 }

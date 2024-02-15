@@ -190,4 +190,7 @@ class ClusterMapStrategyDelegate extends MapStrategyDelegate {
         ..._selectedPlaces.map(_createSelectedPlacemark),
     };
   }
+
+  @override
+  String get title => "Map objects clusterization";
 }

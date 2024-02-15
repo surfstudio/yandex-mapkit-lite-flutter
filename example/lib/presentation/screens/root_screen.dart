@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yandex_mapkit_example/assets/res/assets.dart';
 import 'package:yandex_mapkit_example/presentation/state/collection_map_strategy.dart';
+import 'package:yandex_mapkit_example/presentation/state/custom_clusterization_map_strategy.dart';
 import 'package:yandex_mapkit_example/presentation/state/custom_shape_map_strategy.dart';
 import 'package:yandex_mapkit_example/presentation/state/default_map_strategy.dart';
 import 'package:yandex_mapkit_example/presentation/state/draggable_placemark_map_strategy.dart';
@@ -85,13 +86,21 @@ class _RootScreenState extends State<RootScreen> {
     ///
     /// See [CustomShapeMapStrategyDelegate] for more details.
     CustomShapeMapStrategyDelegate(),
+
+    /// Strategy for map feature showcase with custom clusterization.
+    ///
+    /// This strategy is showing how to add a custom clusterization to the map and
+    /// how to handle user interactions with the clusterization.
+    ///
+    /// See [CustomClusterizationMapStrategyDelegate] for more details.
+    CustomClusterizationMapStrategyDelegate(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Yandex Mapkit Lite'),
+        title: Text(_mapStrategy.title),
         actions: [
           DropdownButton<int>(
             value: _selectedStrategy,
@@ -119,6 +128,10 @@ class _RootScreenState extends State<RootScreen> {
               DropdownMenuItem(
                 value: 5,
                 child: Icon(Icons.shape_line),
+              ),
+              DropdownMenuItem(
+                value: 6,
+                child: Icon(Icons.dashboard_customize),
               ),
             ],
             onChanged: (value) {
@@ -159,6 +172,7 @@ class _RootScreenState extends State<RootScreen> {
           },
           onTrafficChanged: _mapStrategy.onTrafficLevelChanged,
           onUserLocationUpdated: _mapStrategy.onUserLayer,
+          onCameraPositionChanged: _mapStrategy.onCameraPositionChanged,
           allowUserInteractions: _mapStrategy.allowUserInteractions,
         ),
       ),

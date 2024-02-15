@@ -12,6 +12,9 @@ abstract class MapStrategyDelegate extends ChangeNotifier {
   /// Set of map objects to be displayed on the map.
   Set<MapObject> get mapObjects;
 
+  /// The title of the map strategy.
+  String get title;
+
   /// Widget to be displayed as the floating action button on the screen.
   ///
   /// This widget is used to provide user interactions with the map objects.
@@ -35,6 +38,18 @@ abstract class MapStrategyDelegate extends ChangeNotifier {
   ///
   /// The implementation of this callback is optional.
   Future<UserLocationView>? onUserLayer(UserLocationView view) => null;
+
+  /// Callback for user camera position change.
+  ///
+  /// Callback is called whenever user camera position on map changes.
+  ///
+  /// Allows us to introduce custom clusters on map.
+  void onCameraPositionChanged(
+    CameraPosition cameraPosition,
+    CameraUpdateReason reason,
+    bool finished,
+    VisibleRegion visibleRegion,
+  ) {}
 
   /// Map controller.
   ///
