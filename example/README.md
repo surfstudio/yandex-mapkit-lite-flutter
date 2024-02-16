@@ -48,7 +48,7 @@ Add `yandex_mapkit_lite` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  yandex_mapkit_lite: ^0.0.1+1
+  yandex_mapkit_lite: $currentVersion$
 ```
 
 ### Setup for iOS
