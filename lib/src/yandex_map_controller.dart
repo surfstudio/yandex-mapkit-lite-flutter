@@ -74,6 +74,8 @@ class YandexMapController extends ChangeNotifier {
   /// If the returned value is false, the current map style remains unchanged.
   ///
   /// For styling details refer to https://yandex.com/dev/maps/mapkit/doc/dg/concepts/style.html
+  ///
+  /// For generating style string use [this tool.](https://yandex.ru/maps-api/map-style-editor)
   Future<bool> setMapStyle(String style) async {
     return await _channel.invokeMethod('setMapStyle', {'style': style});
   }
