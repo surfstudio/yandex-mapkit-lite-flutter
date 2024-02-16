@@ -1,6 +1,6 @@
 name: yandex_mapkit_lite
 description: This is a lightweight fork of the yandex_mapkit package version 3.4.0.
-version: 0.0.1+1
+version: 1.0.0
 homepage: https://github.com/surfstudio/yandex-mapkit-lite-flutter
 
 environment:
