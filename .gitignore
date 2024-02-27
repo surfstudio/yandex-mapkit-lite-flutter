@@ -70,7 +70,9 @@ migrate_working_dir/
 /pubspec.lock
 **/doc/api/
 .pub-cache/
-.fvm/flutter_sdk
+
+# FVM
+.fvm/
 
 # Android related
 **/android/**/gradle-wrapper.jar
