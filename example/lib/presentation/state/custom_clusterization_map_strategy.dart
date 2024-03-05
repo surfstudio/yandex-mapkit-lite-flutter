@@ -16,10 +16,10 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
   /// There is also a action button for incrementing.
   @override
   Set<MapObject> get mapObjects {
-    return _clusteredObjects.map((cluster) {
+    return _clusteredObjects.where((element) => element.location != null).map((cluster) {
       if (cluster.isCluster ?? false) {
         return PlacemarkMapObject(
-          point: cluster.location,
+          point: cluster.location!,
           icon: PlacemarkIcon.single(
             PlacemarkIconStyle(
               image: BitmapDescriptor.fromAssetImage(Assets.cluster),
@@ -38,10 +38,10 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
         );
       }
 
-      final id = int.parse(cluster.markerId!);
+      final id = int.tryParse(cluster.markerId!);
 
       return PlacemarkMapObject(
-        point: cluster.location,
+        point: cluster.location!,
         icon: PlacemarkIcon.single(
           PlacemarkIconStyle(
             image: BitmapDescriptor.fromAssetImage(
@@ -53,6 +53,8 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
         opacity: 1,
         mapId: MapObjectId(cluster.markerId!),
         onTap: (_, __) {
+          if (id == null) return;
+
           if (_selectedIds.contains(id)) {
             _selectedIds.remove(id);
           } else {
@@ -87,10 +89,20 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
     /// efficiently cluster large amounts of
     /// points.
     _fluster = Fluster<ClusterableWrapper>(
+      /// Any zoom value below minZoom will not generate clusters.
       minZoom: 0,
+
+      /// Any zoom value above maxZoom will not generate clusters.
       maxZoom: 20,
+
+      /// Cluster radius in pixels.
       radius: 150,
+
+      /// Adjust the extent by powers of 2 (e.g. 512. 1024, ... max 8192) to get the
+      /// desired distance between markers where they start to cluster.
       extent: 2048,
+
+      /// The size of the KD-tree leaf node, which affects performance.
       nodeSize: 64,
       points: _clusterables,
       // ignore: avoid_types_on_closure_parameters
@@ -107,12 +119,9 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
     );
   }
 
-  List<ClusterableWrapper> _generateClusterables() {
-    final clusterables = <ClusterableWrapper>[];
-
-    for (int i = 0; i < 100; i++) {
-      clusterables.add(
-        ClusterableWrapper(
+  List<ClusterableWrapper> _generateClusterables() => List.generate(
+        100,
+        (i) => ClusterableWrapper(
           latitude: Constants.defaultLocation.latitude + (0.1 * (i - 50)),
           longitude: Constants.defaultLocation.longitude + (0.1 * (i - 50)),
           isCluster: false,
@@ -121,9 +130,6 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
           markerId: '$i',
         ),
       );
-    }
-    return clusterables;
-  }
 
   /// List of clustered objects.
   ///
@@ -207,8 +213,12 @@ class ClusterableWrapper implements Clusterable {
     this.childMarkerId,
   });
 
-  Point get location => Point(
-        latitude: latitude!,
-        longitude: longitude!,
-      );
+  Point? get location {
+    if (latitude == null || longitude == null) return null;
+
+    return Point(
+      latitude: latitude!,
+      longitude: longitude!,
+    );
+  }
 }
