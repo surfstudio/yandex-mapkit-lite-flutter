@@ -38,7 +38,7 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
         );
       }
 
-      final id = int.tryParse(cluster.markerId!);
+      final id = int.tryParse(cluster.markerId ?? '0');
 
       return PlacemarkMapObject(
         point: cluster.location!,
