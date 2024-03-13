@@ -1,9 +1,6 @@
-<picture>
-
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/surfstudio/yandex-mapkit-lite-flutter/main/assets/yandex_mapkit_lite.dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/surfstudio/yandex-mapkit-lite-flutter/main/assets/yandex_mapkit_lite.light.png">
-  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://raw.githubusercontent.com/surfstudio/yandex-mapkit-lite-flutter/main/assets/yandex_mapkit_lite.light.png">
-</picture>
+<p align="center">
+<img src="https://raw.githubusercontent.com/surfstudio/yandex-mapkit-lite-flutter/main/assets/yandex_mapkit_lite.light.png" height="125" alt="mason logo" />
+</p>
 
 [![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/main.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
 [![Pub Version](https://img.shields.io/pub/v/yandex_mapkit_lite?logo=dart&logoColor=white)](https://pub.dev/packages/yandex_mapkit_lite)
