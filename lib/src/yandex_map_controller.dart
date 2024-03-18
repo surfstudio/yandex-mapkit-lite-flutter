@@ -260,10 +260,10 @@ class YandexMapController extends ChangeNotifier {
     }
 
     _yandexMapState.widget.onCameraPositionChanged!(
-        CameraPosition._fromJson(arguments['cameraPosition']),
-        CameraUpdateReason.values[arguments['reason']],
-        arguments['finished'],
-        VisibleRegion._fromJson(arguments['visibleRegion']),
+      CameraPosition._fromJson(arguments['cameraPosition']),
+      CameraUpdateReason.values[arguments['reason']],
+      arguments['finished'],
+      VisibleRegion._fromJson(arguments['visibleRegion']),
     );
   }
 

@@ -16,7 +16,9 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
   /// There is also a action button for incrementing.
   @override
   Set<MapObject> get mapObjects {
-    return _clusteredObjects.where((element) => element.location != null).map((cluster) {
+    return _clusteredObjects
+        .where((element) => element.location != null)
+        .map((cluster) {
       if (cluster.isCluster ?? false) {
         return PlacemarkMapObject(
           point: cluster.location!,
@@ -106,7 +108,8 @@ class CustomClusterizationMapStrategyDelegate extends MapStrategyDelegate {
       nodeSize: 64,
       points: _clusterables,
       // ignore: avoid_types_on_closure_parameters
-      createCluster: (BaseCluster? cluster, double? longitude, double? latitude) {
+      createCluster:
+          (BaseCluster? cluster, double? longitude, double? latitude) {
         return ClusterableWrapper(
           latitude: latitude,
           longitude: longitude,
