@@ -1,7 +1,7 @@
 part of yandex_mapkit_lite;
 
-typedef CameraPositionCallback = void Function(
-    CameraPosition cameraPosition, CameraUpdateReason reason, bool finished);
+typedef CameraPositionCallback = void Function(CameraPosition cameraPosition,
+    CameraUpdateReason reason, bool finished, VisibleRegion visibleRegion);
 typedef ArgumentCallback<T> = void Function(T argument);
 typedef TapCallback<T> = void Function(T mapObject, Point point);
 typedef DragStartCallback<T> = void Function(T mapObject);

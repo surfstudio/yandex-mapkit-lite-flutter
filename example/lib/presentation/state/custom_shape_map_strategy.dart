@@ -91,4 +91,7 @@ class CustomShapeMapStrategyDelegate extends MapStrategyDelegate {
           ),
         ),
       };
+
+  @override
+  String get title => "Custom map shapess";
 }

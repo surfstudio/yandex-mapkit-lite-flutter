@@ -77,4 +77,7 @@ class TrafficMapStrategyDelegate extends MapStrategyDelegate {
 
   @override
   bool get allowUserInteractions => false;
+
+  @override
+  String get title => "Traffic level layer";
 }

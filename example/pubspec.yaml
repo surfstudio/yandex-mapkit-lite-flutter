@@ -14,6 +14,7 @@ dependencies:
   permission_handler: ^10.4.0
   yandex_mapkit_lite:
     path: ../
+  fluster: ^1.2.0
 
 dev_dependencies:
   flutter_lints: ^2.0.2

@@ -1,8 +1,6 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/b1ca707b-b162-43d5-a9b1-d1895ab99e14">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/f88243c6-26f0-4491-93bd-baf4ad5a5e50">
-  <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/surfstudio/yandex-mapkit-lite-flutter/assets/54618146/f88243c6-26f0-4491-93bd-baf4ad5a5e50">
-</picture>
+<p align="center">
+<img src="https://raw.githubusercontent.com/surfstudio/yandex-mapkit-lite-flutter/main/assets/yandex_mapkit_lite.light.png" height="125" alt="yandex mapkit logo" />
+</p>
 
 [![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/main.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
 [![Pub Version](https://img.shields.io/pub/v/yandex_mapkit_lite?logo=dart&logoColor=white)](https://pub.dev/packages/yandex_mapkit_lite)
@@ -145,6 +143,7 @@ For app bundle size optimization purposes, the original package was moved to lit
 | Offline maps                                 | :white_check_mark: | :white_check_mark:                                                               |
 | Location manager                             | :white_check_mark: | :white_check_mark:                                                               |
 | User location layer                          | :white_check_mark: | :white_check_mark:                                                               |
+| Custom clusterization                        | :x:                | :white_check_mark: - see the example project                                     |
 | Search, hints, geocoding                     | :white_check_mark: | :x: - consider using [yandex_geocoder](https://pub.dev/packages/yandex_geocoder) |
 | Automobile, bicycle, and pedestrian routing  | :white_check_mark: | :x:                                                                              |
 | Routing taking into account public transport | :white_check_mark: | :x:                                                                              |

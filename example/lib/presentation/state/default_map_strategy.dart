@@ -87,4 +87,7 @@ class DefaultIncrementMapStrategyDelegate extends MapStrategyDelegate {
           ),
         ),
       };
+
+  @override
+  String get title => "Yandex Map Lite Overview";
 }
