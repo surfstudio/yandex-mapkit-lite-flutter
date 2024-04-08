@@ -15,12 +15,12 @@ Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but lig
 
 Made by [Surf :surfer:](https://surf.dev/flutter/) Flutter team :cow2:
 
-## Description
+## Overview
 
-- :earth_africa: Map overview - enables to view the map of the world, with which user can interact with any convinient way, usually in order to demonstrate the location of some place
+- :earth_africa: Map overview - enables to view the map of the world, with which user can interact with any convenient way, usually in order to demonstrate the location of some place
 - :house: Custom map objects - enables for developers to add custom map objects in order to indicate some place on the map
-- :video_game: Convinient map controls - there is an API for straight-to-point map controls through the code - from zooming and moving to limiting user scroll and controlling the speed
-- :leaves: App bundle size reduction - noticable app bundle size reduction comparing to projects with [original package](https://pub.dev/packages/yandex_mapkit)
+- :video_game: Convenient map controls - there is an API for straight-to-point map controls through the code - from zooming and moving to limiting user scroll and controlling the speed
+- :leaves: App bundle size reduction - noticeable app bundle size reduction comparing to projects with [original package](https://pub.dev/packages/yandex_mapkit)
 - :sparkles: Recommended for use if you don't need anything but basic map
 
 ## Usage
