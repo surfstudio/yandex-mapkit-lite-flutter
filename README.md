@@ -1,3 +1,12 @@
+# Yandex Mapkit Light
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/surfstudio/flutter-open-source/blob/887525c23f4d57a2d96fc2e6a31e15d1e29d1787/assets/logo_white.png">
+  <img alt="Shows an illustrated sun in light color mode and a moon with stars in dark color mode." src="https://github.com/surfstudio/flutter-open-source/blob/887525c23f4d57a2d96fc2e6a31e15d1e29d1787/assets/logo_black.png" width ="200">
+</picture>
+
+Made by [Surf 🏄‍♂️🏄‍♂️🏄‍♂️](https://surf.dev/)
+
 <p align="center">
 <img src="https://raw.githubusercontent.com/surfstudio/yandex-mapkit-lite-flutter/main/assets/yandex_mapkit_lite.light.png" height="125" alt="yandex mapkit logo" />
 </p>
