@@ -9,7 +9,7 @@ Fork of [yandex_mapkit](https://pub.dev/packages/yandex_mapkit) library, but lig
 
 Made by [Surf 🏄‍♂️🏄‍♂️🏄‍♂️](https://surf.dev/)
 
-[![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/main.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
+[![Build Status](https://shields.io/github/actions/workflow/status/surfstudio/yandex-mapkit-lite-flutter/on_pull_request.yml?logo=github&logoColor=white)](https://github.com/surfstudio/yandex-mapkit-lite-flutter)
 [![Pub Version](https://img.shields.io/pub/v/yandex_mapkit_lite?logo=dart&logoColor=white)](https://pub.dev/packages/yandex_mapkit_lite)
 [![Pub Likes](https://badgen.net/pub/likes/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite)
 [![Pub popularity](https://badgen.net/pub/popularity/yandex_mapkit_lite)](https://pub.dev/packages/yandex_mapkit_lite/score)
