@@ -1,3 +1,9 @@
+# Changelog
+
+## 2.0.1
+
+* Rebradning.
+
 ## 2.0.0
 
 * Add: Visible region to onCameraPositionChanged callback, so we always have up-to-date.
